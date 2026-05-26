@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-slate-50 text-slate-900 antialiased;
+    @apply bg-slate-50 text-slate-900 antialiased transition-colors duration-200 dark:bg-slate-950 dark:text-slate-100;
     font-family: 'DM Sans', system-ui, sans-serif;
   }
 
@@ -20,5 +20,12 @@
       transparent 0% 50%
     );
     background-size: 16px 16px;
+  }
+
+  .dark .checkerboard {
+    background-image: repeating-conic-gradient(
+      #1e293b 0% 25%,
+      transparent 0% 50%
+    );
   }
 }

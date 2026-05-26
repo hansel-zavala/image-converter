@@ -11,14 +11,14 @@ export function ResultStats({ result, onDownload }: ResultStatsProps) {
   const isSmaller = saving > 0;
 
   return (
-    <div className="bg-white border border-slate-200 rounded-xl px-4 py-3 flex items-center justify-between gap-4 flex-wrap">
+    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 flex items-center justify-between gap-4 flex-wrap transition-colors duration-200">
       <div className="flex gap-5 flex-wrap">
         <Stat label="Original" value={formatBytes(result.originalSize)} />
         <Stat label="Convertido" value={formatBytes(result.convertedSize)} />
         <Stat
           label="Ahorro"
           value={`${isSmaller ? '-' : '+'}${Math.abs(saving)}%`}
-          valueClass={isSmaller ? 'text-emerald-600' : 'text-amber-500'}
+           valueClass={isSmaller ? 'text-emerald-600 dark:text-emerald-400' : 'text-amber-500 dark:text-amber-400'}
         />
         <Stat label="Dimensiones" value={`${result.width} × ${result.height}`} />
         <Stat label="Formato" value={result.outputFormat.toUpperCase()} />
@@ -26,8 +26,8 @@ export function ResultStats({ result, onDownload }: ResultStatsProps) {
 
       <button
         onClick={onDownload}
-        className="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white text-sm font-medium
-                   rounded-lg hover:bg-slate-700 active:scale-95 transition-all duration-100 shrink-0"
+        className="flex items-center gap-2 px-4 py-2 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-sm font-medium
+                   rounded-lg hover:bg-slate-700 dark:hover:bg-slate-300 active:scale-95 transition-all duration-100 shrink-0"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -42,7 +42,7 @@ export function ResultStats({ result, onDownload }: ResultStatsProps) {
 function Stat({
   label,
   value,
-  valueClass = 'text-slate-800',
+  valueClass = 'text-slate-800 dark:text-slate-100',
 }: {
   label: string;
   value: string;
@@ -50,7 +50,7 @@ function Stat({
 }) {
   return (
     <div className="flex flex-col gap-0.5">
-      <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+      <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
         {label}
       </span>
       <span className={`font-mono text-sm font-medium ${valueClass}`}>{value}</span>
