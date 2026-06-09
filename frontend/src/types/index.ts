@@ -25,3 +25,15 @@ export interface FileInfo {
   size: number;
   format: string;
 }
+
+export interface QueueItem {
+  id: string;
+  file: File;
+  previewUrl: string;
+  name: string;
+  size: number;
+  format: string;
+  status: ConversionStatus;
+  result: ConversionResult | null;
+  error: string | null;
+}

@@ -1,7 +1,7 @@
 import { useState, useCallback, DragEvent } from 'react';
 
 interface UseDragDropOptions {
-  onDrop: (file: File) => void;
+  onDrop: (files: File[]) => void;
   accept?: string[];
 }
 
@@ -25,12 +25,16 @@ export function useDragDrop({ onDrop, accept }: UseDragDropOptions) {
     e.stopPropagation();
     setIsDragging(false);
 
-    const file = e.dataTransfer.files[0];
-    if (!file) return;
+    const droppedFiles = Array.from(e.dataTransfer.files);
+    if (droppedFiles.length === 0) return;
 
-    if (accept && !accept.includes(file.type)) return;
+    const filteredFiles = accept
+      ? droppedFiles.filter((file) => accept.includes(file.type))
+      : droppedFiles;
 
-    onDrop(file);
+    if (filteredFiles.length > 0) {
+      onDrop(filteredFiles);
+    }
   }, [onDrop, accept]);
 
   return { isDragging, handleDragOver, handleDragLeave, handleDrop };
