@@ -9,8 +9,8 @@ const PORT = process.env.PORT || 4000;
 app.use(cors({ origin: process.env.FRONTEND_URL || 'http://localhost:5173' }));
 app.use(express.json());
 
-app.get('/health', (_req, res) => res.json({ status: 'ok' }));
-app.use('/api/convert', convertRouter);
+app.get(['/api/health', '/health'], (_req, res) => res.json({ status: 'ok' }));
+app.use(['/api/convert', '/convert'], convertRouter);
 app.use(errorHandler);
 
 // Solo escuchar si no estamos en Vercel/Producción (para permitir local dev)
