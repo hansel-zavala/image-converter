@@ -56,10 +56,7 @@ export default function App() {
       <header className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-4 flex items-center justify-between transition-colors duration-200">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 bg-slate-900 dark:bg-slate-100 rounded-lg flex items-center justify-center transition-colors duration-200">
-            <svg className="w-4 h-4 text-white dark:text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
+            <img src="/image/Logo_ConversionImagen.png" alt="Logo Convertidor de imágenes" />
           </div>
           <div>
             <h1 className="text-sm font-semibold text-slate-900 dark:text-slate-100 font-sans">Convertidor de imágenes</h1>
